@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/objectType.xsd">
-	<import>
-		<!-- box controller -->
-		<type>
-			<name>com.uz.box.active</name>
-			<definitionname>com.woltlab.wcf.boxController</definitionname>
-			<classname>wcf\system\box\UzBoxActiveBoxController</classname>
-		</type>
-		
-		<!-- box controller conditions -->
-		<type>
-			<name>com.uz.box.active.lastActivity</name>
-			<definitionname>com.uz.box.active.condition</definitionname>
-			<classname>wcf\system\condition\UzBoxActiveLastActivityCondition</classname>
-		</type>
- 		<type>
-			<name>com.uz.box.active.state</name>
-			<definitionname>com.uz.box.active.condition</definitionname>
-			<classname>wcf\system\condition\UserStateCondition</classname>
-		</type>
-		<type>
-			<name>com.uz.box.active.groups</name>
-			<definitionname>com.uz.box.active.condition</definitionname>
-			<classname>wcf\system\condition\UserGroupCondition</classname>
-		</type>
-	</import>
+    <import>
+        <!-- box controller -->
+        <type>
+            <name>com.uz.box.active</name>
+            <definitionname>com.woltlab.wcf.boxController</definitionname>
+            <classname>wcf\system\box\UzBoxActiveBoxController</classname>
+        </type>
+
+        <!-- box controller conditions -->
+        <type>
+            <name>com.uz.box.active.lastActivity</name>
+            <definitionname>com.uz.box.active.condition</definitionname>
+            <classname>wcf\system\condition\UzBoxActiveLastActivityCondition</classname>
+        </type>
+         <type>
+            <name>com.uz.box.active.state</name>
+            <definitionname>com.uz.box.active.condition</definitionname>
+            <classname>wcf\system\condition\UserStateCondition</classname>
+        </type>
+        <type>
+            <name>com.uz.box.active.groups</name>
+            <definitionname>com.uz.box.active.condition</definitionname>
+            <classname>wcf\system\condition\UserGroupCondition</classname>
+        </type>
+    </import>
 </data>
