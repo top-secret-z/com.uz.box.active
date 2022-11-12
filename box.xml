@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/box.xsd">
-	<import>
-		<box identifier="com.uz.box.active">
-			<name language="de">Mitglieder mit den meisten Punkten (X)</name>
-			<name language="en">Members with the most Points (X)</name>
-			<boxType>system</boxType>
-			<objectType>com.uz.box.active</objectType>
-			<position>sidebarRight</position>
-			<showHeader>1</showHeader>
-			<visibleEverywhere>0</visibleEverywhere>
-			
-			<limit>5</limit>
-			
-			<content language="de">
-				<title>Mitglieder mit den meisten Punkten</title>
-			</content>
-			<content language="en">
-				<title>Members with the most Points</title>
-			</content>
-		</box>
-	</import>
+    <import>
+        <box identifier="com.uz.box.active">
+            <name language="de">Mitglieder mit den meisten Punkten (X)</name>
+            <name language="en">Members with the most Points (X)</name>
+            <boxType>system</boxType>
+            <objectType>com.uz.box.active</objectType>
+            <position>sidebarRight</position>
+            <showHeader>1</showHeader>
+            <visibleEverywhere>0</visibleEverywhere>
+
+            <limit>5</limit>
+
+            <content language="de">
+                <title>Mitglieder mit den meisten Punkten</title>
+            </content>
+            <content language="en">
+                <title>Members with the most Points</title>
+            </content>
+        </box>
+    </import>
 </data>

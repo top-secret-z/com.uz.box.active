@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/language.xsd" languagecode="en" languagename="English" countrycode="gb">
-	<category name="wcf.acp.box">
-		<item name="wcf.acp.box.boxController.com.uz.box.active"><![CDATA[Members with the most Points (X)]]></item>
-		
-		<item name="wcf.acp.box.uzactive.condition.lastActivity"><![CDATA[Last activity]]></item>
-		<item name="wcf.acp.box.uzactive.condition.lastActivity.description"><![CDATA[Users must have been active within the last number of days.]]></item>
-	</category>
-	
-	<category name="wcf.user">
-		<item name="wcf.user.uzboxActive.activityPoints"><![CDATA[{#$boxUser->activityPoints} Point{if $boxUser->activityPoints != 1}s{/if}]]></item>
-	</category>
+    <category name="wcf.acp.box">
+        <item name="wcf.acp.box.boxController.com.uz.box.active"><![CDATA[Members with the most Points (X)]]></item>
+
+        <item name="wcf.acp.box.uzactive.condition.lastActivity"><![CDATA[Last activity]]></item>
+        <item name="wcf.acp.box.uzactive.condition.lastActivity.description"><![CDATA[Users must have been active within the last number of days.]]></item>
+    </category>
+
+    <category name="wcf.user">
+        <item name="wcf.user.uzboxActive.activityPoints"><![CDATA[{#$boxUser->activityPoints} Point{if $boxUser->activityPoints != 1}s{/if}]]></item>
+    </category>
 </language>
