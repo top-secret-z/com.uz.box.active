@@ -16,7 +16,7 @@
     </authorinformation>
 
     <requiredpackages>
-        <requiredpackage minversion="5.5.11">com.woltlab.wcf</requiredpackage>
+        <requiredpackage minversion="5.5.18">com.woltlab.wcf</requiredpackage>
     </requiredpackages>
 
     <excludedpackages>
@@ -42,25 +42,12 @@
         <instruction type="box" />
     </instructions>
 
-    <instructions type="update" fromversion="5.4.0">
+    <instructions type="update" fromversion="5.4.*">
         <instruction type="file" />
         <instruction type="language" />
         <instruction type="template" />
         <instruction type="objectTypeDefinition" />
         <instruction type="objectType" />
         <instruction type="box" />
-    </instructions>
-
-    <instructions type="update" fromversion="5.4.1">
-        <instruction type="file" />
-        <instruction type="language" />
-        <instruction type="template" />
-        <instruction type="objectTypeDefinition" />
-        <instruction type="objectType" />
-        <instruction type="box" />
-    </instructions>
-
-    <instructions type="update" fromversion="5.4.2">
-        <instruction type="template" />
-    </instructions>
+    </instructions
 </package>
