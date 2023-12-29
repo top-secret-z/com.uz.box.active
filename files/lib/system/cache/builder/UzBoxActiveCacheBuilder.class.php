@@ -20,10 +20,12 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+
 namespace wcf\system\cache\builder;
 
 use wcf\system\cache\runtime\UserProfileRuntimeCache;
 use wcf\system\database\util\PreparedStatementConditionBuilder;
+use wcf\system\exception\SystemException;
 use wcf\system\WCF;
 
 /**
@@ -38,8 +40,10 @@ class UzBoxActiveCacheBuilder extends AbstractCacheBuilder
 
     /**
      * @inheritDoc
+     *
+     * @throws SystemException
      */
-    protected function rebuild(array $parameters)
+    protected function rebuild(array $parameters): array
     {
         /**
          * preset data
@@ -61,20 +65,21 @@ class UzBoxActiveCacheBuilder extends AbstractCacheBuilder
             }
 
             if (isset($condition['userIsEnabled'])) {
-                if ($condition['userIsEnabled'] == 0) {
+                if ((int)$condition['userIsEnabled'] === 0) {
                     $conditionBuilder->add('activationCode > ?', [0]);
                 }
-                if ($condition['userIsEnabled'] == 1) {
+
+                if ((int)$condition['userIsEnabled'] === 1) {
                     $conditionBuilder->add('activationCode = ?', [0]);
                 }
             }
 
             if (isset($condition['groupIDs'])) {
-                $conditionBuilder->add('userID IN (SELECT userID FROM wcf' . WCF_N . '_user_to_group WHERE groupID IN (?))', [$condition['groupIDs']]);
+                $conditionBuilder->add('userID IN (SELECT userID FROM wcf1_user_to_group WHERE groupID IN (?))', [$condition['groupIDs']]);
             }
 
             if (isset($condition['notGroupIDs'])) {
-                $conditionBuilder->add('userID NOT IN (SELECT userID FROM wcf' . WCF_N . '_user_to_group WHERE groupID IN (?))', [$condition['notGroupIDs']]);
+                $conditionBuilder->add('userID NOT IN (SELECT userID FROM wcf1_user_to_group WHERE groupID IN (?))', [$condition['notGroupIDs']]);
             }
         }
 
@@ -83,18 +88,17 @@ class UzBoxActiveCacheBuilder extends AbstractCacheBuilder
 
         // get users
         $userIDs = [];
-        $sql = "SELECT        userID
-                FROM        wcf" . WCF_N . "_user
-                " . $conditionBuilder . "
-                ORDER BY activityPoints DESC";
+        $sql = "SELECT userID FROM wcf1_user " . $conditionBuilder . " ORDER BY activityPoints DESC";
 
-        $statement = WCF::getDB()->prepareStatement($sql, $sqlLimit);
+        $statement = WCF::getDB()->prepare($sql, $sqlLimit);
         $statement->execute($conditionBuilder->getParameters());
+
         while ($row = $statement->fetchArray()) {
             $userIDs[] = $row['userID'];
         }
 
         $users = [];
+
         if (!empty($userIDs)) {
             foreach ($userIDs as $userID) {
                 $user = UserProfileRuntimeCache::getInstance()->getObject($userID);
