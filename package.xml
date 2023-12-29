@@ -49,5 +49,5 @@
         <instruction type="objectTypeDefinition" />
         <instruction type="objectType" />
         <instruction type="box" />
-    </instructions
+    </instructions>
 </package>
