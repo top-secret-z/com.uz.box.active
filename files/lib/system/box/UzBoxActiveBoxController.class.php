@@ -72,7 +72,7 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
     {
         // get conditions as parameters for cache builder
         $parameters = [];
-        foreach ($this->box->getConditions() as $condition) {
+        foreach ($this->box->getControllerConditions() as $condition) {
             $parameters[] = $condition->conditionData;
         }
         $parameters[] = ['limit' => $this->limit];
