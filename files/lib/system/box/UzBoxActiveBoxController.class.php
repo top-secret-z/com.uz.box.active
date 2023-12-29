@@ -54,7 +54,7 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
     /**
      * @inheritDoc
      */
-    public function getLink()
+    public function getLink(): string
     {
         if (MODULE_MEMBERS_LIST) {
             $parameters = 'sortField=activityPoints&sortOrder=DESC';
