@@ -20,10 +20,12 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+
 namespace wcf\system\box;
 
 use wcf\system\cache\builder\UzBoxActiveCacheBuilder;
 use wcf\system\event\EventHandler;
+use wcf\system\exception\SystemException;
 use wcf\system\request\LinkHandler;
 use wcf\system\WCF;
 
@@ -53,10 +55,12 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
 
     /**
      * @inheritDoc
+     *
+     * @throws SystemException
      */
-    public function getLink()
+    public function getLink(): string
     {
-        if (MODULE_MEMBERS_LIST) {
+        if ($this->hasLink()) {
             $parameters = 'sortField=activityPoints&sortOrder=DESC';
 
             return LinkHandler::getInstance()->getLink('MembersList', [], $parameters);
@@ -67,12 +71,14 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
 
     /**
      * @inheritDoc
+     *
+     * @throws SystemException
      */
     protected function getObjectList()
     {
         // get conditions as parameters for cache builder
         $parameters = [];
-        foreach ($this->box->getConditions() as $condition) {
+        foreach ($this->box->getControllerConditions() as $condition) {
             $parameters[] = $condition->conditionData;
         }
         $parameters[] = ['limit' => $this->limit];
@@ -83,7 +89,7 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
     /**
      * @inheritDoc
      */
-    protected function getTemplate()
+    protected function getTemplate(): string
     {
         return WCF::getTPL()->fetch('boxUzActive', 'wcf', [
             'boxUserList' => $this->objectList,
@@ -92,8 +98,10 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
 
     /**
      * @inheritDoc
+     *
+     * @throws SystemException
      */
-    public function hasContent()
+    public function hasContent(): bool
     {
         if ($this->objectList === null) {
             $this->objectList = $this->getObjectList();
@@ -107,7 +115,7 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
     /**
      * @inheritDoc
      */
-    protected function loadContent()
+    protected function loadContent(): void
     {
         $this->content = $this->getTemplate();
     }
@@ -115,8 +123,8 @@ class UzBoxActiveBoxController extends AbstractDatabaseObjectListBoxController
     /**
      * @inheritDoc
      */
-    public function hasLink()
+    public function hasLink(): bool
     {
-        return MODULE_MEMBERS_LIST == 1;
+        return MODULE_MEMBERS_LIST === 1 && WCF::getSession()->getPermission('user.profile.canViewMembersList');
     }
 }
