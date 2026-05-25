@@ -5,8 +5,8 @@
         <packagedescription>Provides an additional system box for configurably displaying the most active members.</packagedescription>
         <packagename language="de">Box „Mitglieder mit den meisten Punkten“</packagename>
         <packagedescription language="de">Ergänzt eine System-Box zur konfigurierbaren Anzeige der aktivsten Mitglieder.</packagedescription>
-        <version>6.0.0</version>
-        <date>2023-12-29</date>
+        <version>6.2.0</version>
+        <date>2026-05-25</date>
         <license><![CDATA[LGPL <https://opensource.org/licenses/lgpl-license.php>]]></license>
     </packageinformation>
 
@@ -16,11 +16,11 @@
     </authorinformation>
 
     <requiredpackages>
-        <requiredpackage minversion="5.5.18">com.woltlab.wcf</requiredpackage>
+        <requiredpackage minversion="5.5.24">com.woltlab.wcf</requiredpackage>
     </requiredpackages>
 
     <excludedpackages>
-        <excludedpackage version="6.1.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+        <excludedpackage version="6.3.0 Alpha 1">com.woltlab.wcf</excludedpackage>
         <excludedpackage version="*">com.uz.box.active</excludedpackage>
     </excludedpackages>
 
@@ -33,7 +33,7 @@
         <instruction type="box" />
     </instructions>
 
-    <instructions type="update" fromversion="*">
+    <instructions type="update" fromversion="6.1.0">
         <instruction type="file" />
         <instruction type="language" />
         <instruction type="template" />
