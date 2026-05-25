@@ -33,7 +33,7 @@
         <instruction type="box" />
     </instructions>
 
-    <instructions type="update" fromversion="*">
+    <instructions type="update" fromversion="6.1.0">
         <instruction type="file" />
         <instruction type="language" />
         <instruction type="template" />
